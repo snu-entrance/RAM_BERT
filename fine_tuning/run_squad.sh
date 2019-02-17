@@ -10,8 +10,6 @@ fi
 
 cp pytorch-pretrained-BERT/examples/run_squad.py .
 
-set -x
-
 KORQUAD_TRAIN_URL=https://korquad.github.io/dataset/KorQuAD_v1.0_train.json
 KORQUAD_DEV_URL=https://korquad.github.io/dataset/KorQuAD_v1.0_dev.json
 DATA_DIR=data
