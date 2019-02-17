@@ -10,11 +10,15 @@ fi
 
 cp pytorch-pretrained-BERT/examples/run_squad.py .
 
+set -x
+
 KORQUAD_TRAIN_URL=https://korquad.github.io/dataset/KorQuAD_v1.0_train.json
-KORQUAD_TRAIN_URL=https://korquad.github.io/dataset/KorQuAD_v1.0_dev.json
-mkdir -p data
-wget ${KORQUAD_TRAIN_URL} > data/KorQuAD_v1.0_train.json 
-wget ${KORQUAD_TRAIN_URL} > data/KorQuAD_v1.0_dev.json 
+KORQUAD_DEV_URL=https://korquad.github.io/dataset/KorQuAD_v1.0_dev.json
+DATA_DIR=data
+
+mkdir -p ${DATA_DIR}
+wget ${KORQUAD_TRAIN_URL} --directory-prefix=${DATA_DIR}
+wget ${KORQUAD_DEV_URL} --directory-prefix=${DATA_DIR}
 
 python run_squad.py \
 		   --bert_model bert-base-multilingual-uncased \
