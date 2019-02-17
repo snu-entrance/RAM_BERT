@@ -19,6 +19,6 @@ wget ${KORQUAD_TRAIN_URL} > data/KorQuAD_v1.0_dev.json
 python run_squad.py \
 		   --bert_model bert-base-multilingual-uncased \
 		   --output_dir model/test \
-		   --train_file KorQuAD_v1.0_train.json \
-		   --predict_file KorQuAD_v1.0_dev.json \
+		   --train_file data/KorQuAD_v1.0_train.json \
+		   --predict_file data/KorQuAD_v1.0_dev.json \
 		   --do_train
