@@ -17,12 +17,15 @@ KORQUAD_DEV_URL=https://korquad.github.io/dataset/KorQuAD_v1.0_dev.json
 DATA_DIR=data
 
 mkdir -p ${DATA_DIR}
-wget ${KORQUAD_TRAIN_URL} --directory-prefix=${DATA_DIR}
-wget ${KORQUAD_DEV_URL} --directory-prefix=${DATA_DIR}
+
+wget -N ${KORQUAD_TRAIN_URL} --directory-prefix=${DATA_DIR}
+wget -N ${KORQUAD_DEV_URL} --directory-prefix=${DATA_DIR}
 
 python run_squad.py \
-		   --bert_model bert-base-multilingual-uncased \
+		   --bert_model bert-base-multilingual-cased \
 		   --output_dir model/test \
+		   --train_batch_size 16 \
+		   --max_seq_length 256 \
 		   --train_file data/KorQuAD_v1.0_train.json \
 		   --predict_file data/KorQuAD_v1.0_dev.json \
 		   --do_train
