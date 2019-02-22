@@ -7,8 +7,9 @@ then
 else
 	git clone https://github.com/huggingface/${PYTORCH_BERT_GITHUB_REPO_NAME}
 fi
-
 cp pytorch-pretrained-BERT/examples/run_squad.py .
+
+pip install -r requirement.txt
 
 KORQUAD_TRAIN_URL=https://korquad.github.io/dataset/KorQuAD_v1.0_train.json
 KORQUAD_DEV_URL=https://korquad.github.io/dataset/KorQuAD_v1.0_dev.json
